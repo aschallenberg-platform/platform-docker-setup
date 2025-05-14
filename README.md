@@ -23,7 +23,7 @@ Im ersten Abschnitt der Datei sind Konfigurationsmöglichkeiten der Datenbank mi
 | `MYSQL_USER`                        | `platform_user`                                              | Benutzername des MySQL-Benutzers, über den die Plattform auf die Datenbank zugreift.       |
 | `MYSQL_PASSWORD`                    | `password`                                                   | Passwort des MySQL-Benutzers, über den die Plattform auf die Datenbank zugreift.           |
 | `MYSQL_DATABASE`                    | `platform_db`                                                | Name der MySQL-Datenbank, in der die Plattform ihre Daten ablegt                           |
-| `MYSQL_PORT`                        | `3307`                                                       | Port, über den MySQL angesprochen wird                                                     |
+| `MYSQL_PORT`                        | `3306`                                                       | Port, über den MySQL angesprochen wird                                                     |
 | `MYSQL_CONTAINER_NAME`              | `platform-db`                                                | Name des MySQL-Containers (in Docker)                                                      |
 | `MYSQL_ROOT_PASSWORD`               | `rootpass`                                                   | Passwort für den MySQL-Root-Benutzer (relevant für manuelle Eingriffe in die Datenbank)    |
 
