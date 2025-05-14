@@ -1,0 +1,47 @@
+services:
+  db:
+    image: ghcr.io/aschallenberg-platform/platform-db:latest
+    container_name: ${MYSQL_CONTAINER_NAME:-platform-db}
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootpass}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-platform_db}
+      MYSQL_USER: ${MYSQL_USER:-platform_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-platform_pass}
+    ports:
+      - "${MYSQL_PORT:-3306}:${MYSQL_PORT:-3306}"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  app:
+    image: ghcr.io/aschallenberg-platform/platform-app:latest
+    container_name: platform-app
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/${MYSQL_DATABASE:-platform_db}
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER:-platform_user}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD:-platform_pass}
+      SPRING_MAIL_SENDING_HOST: ${SPRING_MAIL_SENDING_HOST}
+      SPRING_MAIL_SENDING_PORT: ${SPRING_MAIL_SENDING_PORT}
+      SPRING_MAIL_USERNAME: ${SPRING_MAIL_USERNAME}
+      SPRING_MAIL_PASSWORD: ${SPRING_MAIL_PASSWORD}
+      SPRING_MAIL_SENDING_PROTOCOL: ${SPRING_MAIL_SENDING_PROTOCOL}
+      SPRING_MAIL_SMTP_AUTH: ${SPRING_MAIL_SMTP_AUTH}
+      SPRING_MAIL_SMTP_STARTTLS: ${SPRING_MAIL_SMTP_STARTTLS}
+      SPRING_MAIL_SMTP_SSL: ${SPRING_MAIL_SMTP_SSL}
+      PLATFORM_SSL: ${PLATFORM_SSL}
+      PLATFORM_USERLOCK: ${PLATFORM_USERLOCK}
+      PLATFORM_SUPERUSER_USERNAME: ${PLATFORM_SUPERUSER_USERNAME}
+      PLATFORM_SUPERUSER_EMAIL: ${PLATFORM_SUPERUSER_EMAIL}
+      PLATFORM_SUPERUSER_PASSWORD: ${PLATFORM_SUPERUSER_PASSWORD}
+      PLATFORM_LINK_GAME_LIBRARY: ${PLATFORM_LINK_GAME_LIBRARY}
+      PLATFORM_LINK_GAME_TEMPLATE: ${PLATFORM_LINK_GAME_TEMPLATE}
+      PLATFORM_LINK_BOT_LIBRARY: ${PLATFORM_LINK_BOT_LIBRARY}
+      PLATFORM_LINK_BOT_TEMPLATE: ${PLATFORM_LINK_BOT_TEMPLATE}
+    ports:
+      - "${PLATFORM_PORT:-8080}:8080"
+    depends_on:
+      - db
+
+volumes:
+  db_data:
