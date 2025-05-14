@@ -1,9 +1,9 @@
 # Plattform Docker Setup
-Dieses Repository dient dem starten der [Plattform](https://github.com/aschallenberg-platform/platform).
+Dieses Repository dient dem Starten der [Plattform](https://github.com/aschallenberg-platform/platform).
 
-Die Plattform verwendet Docker und Docker Compose, um die Plattform in Form einer Spring Boot Anwendung zusammen mit einer MySQL-Datenbank in Containern zu starten. In dieser Anleitung wird beschrieben, wie das Projekt lokal auf einem eigenen Computer zum Laufen gebracht wird.
+Es wird Docker und Docker Compose verwendet, um die Plattform in Form einer Spring Boot Anwendung zusammen mit einer MySQL-Datenbank in Containern zu starten. In dieser Anleitung wird beschrieben, wie das Projekt lokal auf einem eigenen Computer zum Laufen gebracht wird.
 
-## 1) Repository herunterladen
+## 1. Repository herunterladen
 Das Repository kann als zip auf der [GitHub-Seite des Projekts](https://github.com/aschallenberg-platform/platform-docker-setup) heruntergeladen werden. Dann muss die zip in einem gewünschten Verzeichnis entpackt werden.
 
 Alternativ kann man das Projekt von GitHub klonen:
@@ -12,7 +12,7 @@ git clone https://github.com/aschallenberg-platform/platform-docker-setup.git
 cd platform
 ```
 
-## 2) Konfigurieren
+## 2. Konfigurieren
 Zur Konfiguration der Plattform steht die .env Datei bereit.
 
 ### Datenbank konfigurieren
@@ -62,37 +62,29 @@ Des Weiteren müssen Plattform-spezifische Einstellungen getroffen werden.
 
 ## Voraussetzungen für Docker
 
-Bevor du das Projekt mit Docker-Compose startest, stelle sicher, dass du die folgende Software installiert hast:
+Bevor das Projekt mit Docker-Compose gestartet werden kann, muss sichergestellt werden, dass die folgende Software installiert ist:
 
 1. **Docker**: [Download und Installation von Docker](https://www.docker.com/get-started)
-2. **Docker Compose**: Docker Compose ist in Docker Desktop bereits integriert. Falls du Docker Compose separat installieren musst, findest du die Anleitung [hier](https://docs.docker.com/compose/install/).
+2. **Docker Compose**: Docker Compose ist in Docker Desktop bereits integriert. Eine Anleitung zur manuellen Installation von Docker Compose ist [hier](https://docs.docker.com/compose/install/) zu finden.
 
-Stelle sicher, dass Docker und Docker Compose ordnungsgemäß installiert und betriebsbereit sind. Du kannst dies überprüfen, indem du die folgenden Befehle in deiner Kommandozeile ausführst:
+Um zu überprüfen, ob Docker und Docker Compose ordnungsgemäß installiert wurden und betriebsbereit sind können folgende Befehle verwendet werden:
 
 ```bash
 docker --version
 docker-compose --version
 ```
 
-## Docker starten
-
-### Repository herunterladen
-
-
-
-### Docker-Compose Setup
-
-#### 1. Docker-Container starten
+## 3. Docker-Container starten
 
 Das Projekt verwendet **Docker Compose**, um sowohl den MySQL-Container als auch den Spring Boot-Container zu starten und zu verbinden. Docker Compose wird alle erforderlichen Dienste basierend auf der `compose.yaml`-Datei konfigurieren und starten.
 
-Navigiere im Terminal in das Verzeichnis des Projekts (falls du es noch nicht getan hast) und führe folgenden Befehl aus:
+Falls noch nicht geschehen, muss jetzt im terminal in das Verzeichnis des Projekts gewechselt werden. Danach muss folgender Befehl ausgeführt werden um die Container zu starten:
 
 ```bash
 docker-compose up -d
 ```
 
-##### Erklärung der Optionen:
+### Erklärung der Optionen:
 
 - `up`: Startet die Container.
 - `-d`: Führt die Container im Hintergrund (detached mode) aus.
@@ -102,29 +94,29 @@ Docker Compose wird nun die folgenden Schritte ausführen:
 2. Der Spring Boot-Container wird heruntergeladen und ein Container wird gestartet.
 3. Die beiden Container werden miteinander verbunden, sodass die Spring Boot-Anwendung auf die MySQL-Datenbank zugreifen kann.
 
-#### 2. Container prüfen
+## 4. Docker-Container prüfen
 
-Um zu überprüfen, ob die Container erfolgreich gestartet wurden, kannst du den folgenden Befehl verwenden:
-
-```bash
-docker ps
-```
-
-Dieser Befehl zeigt dir alle laufenden Docker-Container. Du solltest die beiden Container sehen: `platform-db` und `platform-app`.
-
-#### 3. Logs anzeigen
-
-Um die Logs eines Containers zu prüfen und etwaige Fehler zu debuggen, verwende den folgenden Befehl:
+Um zu überprüfen, ob die Container erfolgreich gestartet wurden, kann folgender Befehl verwendet werden:
 
 ```bash
-docker logs platform-app
+docker compose ps
 ```
 
-Dies gibt dir eine Ausgabe der Spring Boot-Anwendung, einschließlich aller Fehler oder Startinformationen.
+Dieser Befehl zeigt dir alle laufenden Docker-Container. Es solltest zwei Container wie `platform-db` und `platform-app` zu sehen sein.
 
-## Docker stoppen
+## 5. Logs anzeigen
 
-Wenn du die Container stoppen möchtest, kannst du den folgenden Befehl ausführen:
+Um die Logs eines Containers zu prüfen und etwaige Fehler zu debuggen, wird der folgende Befehl verwendet:
+
+```bash
+docker compose logs app
+```
+
+Dies gibt eine Ausgabe der Spring Boot-Anwendung einschließlich aller Fehler oder Startinformationen zurück.
+
+## 6. Docker-Container stoppen
+
+Um die Container zu stoppen, kann folgender Befehl ausgefürt werden:
 
 ```bash
 docker-compose down
