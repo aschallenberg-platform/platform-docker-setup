@@ -71,7 +71,7 @@ Um zu überprüfen, ob Docker und Docker Compose ordnungsgemäß installiert wur
 
 ```bash
 docker --version
-docker-compose --version
+docker compose --version
 ```
 
 ## 3. Docker-Container starten
@@ -81,7 +81,7 @@ Das Projekt verwendet **Docker Compose**, um sowohl den MySQL-Container als auch
 Falls noch nicht geschehen, muss jetzt im terminal in das Verzeichnis des Projekts gewechselt werden. Danach muss folgender Befehl ausgeführt werden um die Container zu starten:
 
 ```bash
-docker-compose up -d
+docker compose up -d
 ```
 
 ### Erklärung der Optionen:
@@ -102,7 +102,7 @@ Um zu überprüfen, ob die Container erfolgreich gestartet wurden, kann folgende
 docker compose ps
 ```
 
-Dieser Befehl zeigt dir alle laufenden Docker-Container. Es solltest zwei Container wie `platform-db` und `platform-app` zu sehen sein.
+Dieser Befehl zeigt alle laufenden Docker-Container. Es sollten zwei Container zu sehen sein (z.B. `platform-db` und `platform-app`).
 
 ## 5. Logs anzeigen
 
@@ -119,7 +119,7 @@ Dies gibt eine Ausgabe der Spring Boot-Anwendung einschließlich aller Fehler od
 Um die Container zu stoppen, kann folgender Befehl ausgefürt werden:
 
 ```bash
-docker-compose down
+docker compose down
 ```
 
 Dieser Befehl stoppt und entfernt alle Container, Netzwerke und Volumes, die durch Docker Compose erstellt wurden.
