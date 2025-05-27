@@ -32,16 +32,18 @@ Im ersten Abschnitt der Datei sind Konfigurationsmöglichkeiten der Datenbank mi
 Es muss eine E-Mail-Adresse konfiguriert werden, über die die Plattform Confirmation-E-Mails wie Verfikationslinks und Links zum Ändern des Passwords für die Nutzer versendet wird.
 Hierbei ist zu beachten, dass manche E-Mail-Dienste (z.B. Gmail) statt des Passworts einen speziellen API-Token braucht, der über Gmail erstellt wird.
 
-| Variablenname                      | Standardwert                                                 | Beschreibung                                                                              |
-|------------------------------------|--------------------------------------------------------------|-------------------------------------------------------------------------------------------|
-| `SPRING_MAIL_SENDING_HOST`         | *(leer)*                                                     | Hostname des SMTP-Servers                                                                 |
-| `SPRING_MAIL_SENDING_PORT`         | *(leer)*                                                     | Port des SMTP-Servers                                                                     |
-| `SPRING_MAIL_USERNAME`             | *(leer)*                                                     | Benutzername für SMTP-Authentifizierung (idR. Postfach-Benutzername oder E-Mail-Adresse)  |
-| `SPRING_MAIL_PASSWORD`             | *(leer)*                                                     | Passwort für SMTP-Authentifizierung (idR. Postfach-Passwort oder API-Token)               |
-| `SPRING_MAIL_SENDING_PROTOCOL`     | `smtps`                                                      | Verwendetes Protokoll zum Senden von E-Mails (z. B. `smtp`, `smtps`)                      |
-| `SPRING_MAIL_SMTP_AUTH`            | `true`                                                       | SMTP-Authentifizierung erforderlich (`true` oder `false`)                                 |
-| `SPRING_MAIL_SMTP_STARTTLS`        | `true`                                                       | TLS-Verschlüsselung via STARTTLS aktivieren (`true` oder `false`)                         |
-| `SPRING_MAIL_SMTP_SSL`             | `true`                                                       | SSL-Verschlüsselung aktivieren (`true` oder `false`)                                      |
+| Variablenname                      | Standardwert                                                 | Beschreibung                                                                               |
+|------------------------------------|--------------------------------------------------------------|--------------------------------------------------------------------------------------------|
+| `PLATFORM_MAIL_SENDING_ADDRESS`    | *(leer)*                                                     | Absender-Adresse für E-Mails von der Plattform                                             |
+| `PLATFORM_MAIL_REPLY_ADDRESS`      | *(leer)*                                                     | Reply-Adresse für E-Mails von der Plattform (idR. gleich mit Absender-Adresse oder noreply |
+| `SPRING_MAIL_SENDING_HOST`         | *(leer)*                                                     | Hostname des SMTP-Servers                                                                  |
+| `SPRING_MAIL_SENDING_PORT`         | *(leer)*                                                     | Port des SMTP-Servers                                                                      |
+| `SPRING_MAIL_USERNAME`             | *(leer)*                                                     | Benutzername für SMTP-Authentifizierung (idR. Postfach-Benutzername oder E-Mail-Adresse)   |
+| `SPRING_MAIL_PASSWORD`             | *(leer)*                                                     | Passwort für SMTP-Authentifizierung (idR. Postfach-Passwort oder API-Token)                |
+| `SPRING_MAIL_SENDING_PROTOCOL`     | `smtps`                                                      | Verwendetes Protokoll zum Senden von E-Mails (z. B. `smtp`, `smtps`)                       |
+| `SPRING_MAIL_SMTP_AUTH`            | `true`                                                       | SMTP-Authentifizierung erforderlich (`true` oder `false`)                                  |
+| `SPRING_MAIL_SMTP_STARTTLS`        | `true`                                                       | TLS-Verschlüsselung via STARTTLS aktivieren (`true` oder `false`)                          |
+| `SPRING_MAIL_SMTP_SSL`             | `true`                                                       | SSL-Verschlüsselung aktivieren (`true` oder `false`)                                       |
 
 ### Plattform-Einstellungen treffen
 Des Weiteren müssen Plattform-spezifische Einstellungen getroffen werden.
